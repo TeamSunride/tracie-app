@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         primary: "#dc453d",
         secondary: "#320e3b",
+      },
+      fontFamily: {
+        "sans": ["Roboto", "sans-serif"],
       }
     },
     plugins: [],

@@ -1,5 +1,5 @@
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { Pressable } from "react-native";
+import { Pressable, Text } from "react-native";
 
 export default function Camera() {
   const [permission, requestPermission] = useCameraPermissions();
@@ -17,6 +17,7 @@ export default function Camera() {
         <CameraView
           facing="back"
           onBarcodeScanned={(scanData) => console.log(scanData)}
+          style={{ width: "100%", height: "100%" }}
         />
       )}
     </>

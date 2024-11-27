@@ -3,7 +3,18 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+          sunrideRed: "#dc453d",
+      }
+    },
+    colors: {
+      primary: "#dc453d",
+      secondary: "#320e3b",
+    },
+    fontFamily: {
+      "sans": ["Roboto", "sans-serif"],
+    }
   },
   plugins: [],
 }

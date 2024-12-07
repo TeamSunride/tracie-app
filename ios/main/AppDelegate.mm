@@ -1,7 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-#import "RNBleManager.h"
+#import "BleManager.h"
 
 @implementation AppDelegate
 

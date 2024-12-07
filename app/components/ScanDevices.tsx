@@ -32,7 +32,7 @@ import BleManager, {
 } from 'react-native-ble-manager';
 
 const SECONDS_TO_SCAN_FOR = 3;
-const SERVICE_UUIDS: string[] = ["00001800-0000-1000-8000-00805f9b34fb"];
+const SERVICE_UUIDS: string[] = []; //"00001800-0000-1000-8000-00805f9b34fb"
 const ALLOW_DUPLICATES = true;
 console.log(NativeModules.BleManager);
 const BleManagerModule = NativeModules.BleManager;

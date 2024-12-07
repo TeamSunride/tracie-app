@@ -13,8 +13,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-main-mainTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-main-mainTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B407B91F2D0461DC008916AA /* libreact-native-ble-manager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B407B91E2D0461DC008916AA /* libreact-native-ble-manager.a */; };
 		B486F61D2CFF404400AAE8E8 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
-		B4EEA1BF2D00C2A5007CD9F5 /* libRNBleManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4EEA1BE2D00C2A5007CD9F5 /* libRNBleManager.a */; };
 		F2AC8B88D342E3C5B44F0EDC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +53,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-main.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-main.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = main/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-main-mainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-main-mainTests.release.xcconfig"; path = "Target Support Files/Pods-main-mainTests/Pods-main-mainTests.release.xcconfig"; sourceTree = "<group>"; };
+		B407B91E2D0461DC008916AA /* libreact-native-ble-manager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-ble-manager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EE9F6D2CFF8FE5007CD9F5 /* RCTSurfaceHostingProxyRootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTSurfaceHostingProxyRootView.h; sourceTree = "<group>"; };
 		B4EE9F6E2CFF8FE5007CD9F5 /* RCTSurfaceHostingProxyRootView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTSurfaceHostingProxyRootView.mm; sourceTree = "<group>"; };
 		B4EE9F6F2CFF8FE5007CD9F5 /* RCTSurfaceHostingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTSurfaceHostingView.h; sourceTree = "<group>"; };
@@ -593,7 +594,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4EEA1BF2D00C2A5007CD9F5 /* libRNBleManager.a in Frameworks */,
+				B407B91F2D0461DC008916AA /* libreact-native-ble-manager.a in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-main.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +636,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B407B91E2D0461DC008916AA /* libreact-native-ble-manager.a */,
 				B4EEA1BE2D00C2A5007CD9F5 /* libRNBleManager.a */,
 				B4EEA1B52D0094F6007CD9F5 /* libRNBleManager.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,

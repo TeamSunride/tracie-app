@@ -31,6 +31,7 @@ import BleManager from 'react-native-ble-manager';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ScanDevicesScreen from './components/ScanDevices';
+import { NavigationContainer } from '@react-navigation/native';
 
 console.log(NativeModules);
 
@@ -284,7 +285,9 @@ function App(): React.JSX.Element {
           <Text className="text-3xl text-secondary text-center font-bold italics">
             Tracie App
           </Text>
-          <ScanDevicesScreen />
+          <NavigationContainer>
+            <ScanDevicesScreen />
+          </NavigationContainer>
           {/* <Button title='Check Permissions' onPress={checkPermissions} /> */}
           {/* <Button
             title={scanning ? 'Stop Scanning' : 'Start Scanning'}

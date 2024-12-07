@@ -17,6 +17,7 @@ import {
   TouchableHighlight,
   Pressable,
 } from 'react-native';
+import { Buffer } from 'buffer';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from '@react-navigation/native';
@@ -165,7 +166,16 @@ const ScanDevicesScreen = () => {
         );
       }
     } else {
+      console.log("CONNECTING TO PERIPHERAL", peripheral.id);
       await connectPeripheral(peripheral);
+      // send data to newly connected peripheral
+      console.log(peripheral);
+      try {
+        const response = await BleManager.read(peripheral.id, "B370", "B371");
+        console.log("read data:", Buffer.from(response, "base64").toString('utf8')); 
+      } catch (error) {
+        console.error("Error reading data from peripheral", error);
+      }
     }
   };
 

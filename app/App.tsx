@@ -22,7 +22,8 @@ import {
   View,
 } from 'react-native';
 import '../global.css';
-import BleManager from 'react-native-ble-manager';
+// import BleManager from 'react-native-ble-manager';
+import BootSplash from "react-native-bootsplash";
 // import { broadcast, setCompanyId } from 'react-native-ble-advertise';
 
 // const uuid = '44C13E43-097A-9C9F-537F-5666A6840C08';
@@ -264,6 +265,17 @@ function App(): React.JSX.Element {
   //   //   );
   //   // };
   // }, []);
+
+  useEffect(() => {
+    const init = async () => {
+      // …do multiple sync or async tasks
+    };
+
+    init().finally(async () => {
+      await BootSplash.hide({ fade: true });
+      console.log("BootSplash has been hidden successfully");
+    });
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>

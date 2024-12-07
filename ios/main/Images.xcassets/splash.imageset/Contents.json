@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "sunrIde_logo_300ppi-1-2048x880.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "sunrIde_logo_300ppi-1-2048x880@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "sunrIde_logo_300ppi-1-2048x880@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -21,9 +21,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import BleManager from 'react-native-ble-manager';
 import '../global.css';
 // import BleManager from 'react-native-ble-manager';
-import BootSplash from "react-native-bootsplash";
+import BootSplash from 'react-native-bootsplash';
+import 'react-native-reanimated';
+import 'react-native-gesture-handler';
 // import { broadcast, setCompanyId } from 'react-native-ble-advertise';
 
 // const uuid = '44C13E43-097A-9C9F-537F-5666A6840C08';
@@ -32,15 +35,16 @@ import BootSplash from "react-native-bootsplash";
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ScanDevicesScreen from './components/ScanDevices';
-import { NavigationContainer } from '@react-navigation/native';
-
-console.log(NativeModules);
+import {NavigationContainer} from '@react-navigation/native';
+import Hello from './components/Main';
+import { scanBleDevices } from '../util/ble';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: 'black',
+    flex: 1,
   };
 
   // const [peripherals, setPeripherals] = useState([]);
@@ -269,39 +273,50 @@ function App(): React.JSX.Element {
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
+      try {
+        BleManager.start({showAlert: false})
+          .then(() => console.debug('BleManager started.'))
+          .catch((error: any) =>
+            console.error('BeManager could not be started.', error),
+          );
+      } catch (error) {
+        console.error('unexpected error starting BleManager.', error);
+        return;
+      }
     };
 
     init().finally(async () => {
-      await BootSplash.hide({ fade: true });
-      console.log("BootSplash has been hidden successfully");
+      await BootSplash.hide({fade: true});
+      console.log('BootSplash has been hidden successfully');
     });
   }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        barStyle="dark-content"
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
+      {/* <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-          className="p-12">
-          <Text className="text-5xl text-primary text-center font-bold">
+        style={backgroundStyle}> */}
+      <View
+        style={{
+          backgroundColor: Colors.black,
+          flex: 1,
+        }}>
+        <Hello />
+        {/* <Text className="text-5xl text-primary text-center font-bold">
             Sunride
           </Text>
           <Text className="text-3xl text-secondary text-center font-bold italics">
             Tracie App
-          </Text>
-          <NavigationContainer>
+          </Text> */}
+        {/* <NavigationContainer>
             <ScanDevicesScreen />
-          </NavigationContainer>
-          {/* <Button title='Check Permissions' onPress={checkPermissions} /> */}
-          {/* <Button
+          </NavigationContainer> */}
+        {/* <Button title='Check Permissions' onPress={checkPermissions} /> */}
+        {/* <Button
             title={scanning ? 'Stop Scanning' : 'Start Scanning'}
             onPress={scanning ? stopScan : scan}
           />
@@ -366,13 +381,13 @@ function App(): React.JSX.Element {
             </View>
           )}
           {error && <Text style={{color: 'red'}}>{error}</Text>} */}
-          {/* <Button
+        {/* <Button
             title="set company id"
             onPress={() => {
               setCompanyId(0x00E0);
             }}
           /> */}
-          {/* <Button
+        {/* <Button
             title="advertise"
             onPress={() => {
               broadcast(uuid, major, minor)
@@ -384,8 +399,8 @@ function App(): React.JSX.Element {
                 });
             }}
           /> */}
-        </View>
-      </ScrollView>
+      </View>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }

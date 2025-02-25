@@ -37,7 +37,12 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ScanDevicesScreen from './components/ScanDevices';
 import {NavigationContainer} from '@react-navigation/native';
 import Hello from './components/Main';
-import { scanBleDevices } from '../util/ble';
+import {scanBleDevices} from '../util/ble';
+// import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+// import Simplified from './components/Simplified';
+// import Complex from './components/Complex';
+
+// const Tab = createMaterialTopTabNavigator();
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -270,6 +275,16 @@ function App(): React.JSX.Element {
   //   // };
   // }, []);
 
+  const [displayScreen, setDisplayScreen] = useState('NotConnected');
+
+  const clearNotConnectedScreen = () => {
+    setDisplayScreen('Simplified');
+  };
+
+  const ressurectNotConnectedScreen = () => {
+    setDisplayScreen('NotConnected');
+  };
+
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
@@ -305,7 +320,22 @@ function App(): React.JSX.Element {
           backgroundColor: Colors.black,
           flex: 1,
         }}>
-        <Hello />
+        {displayScreen === 'NotConnected' && (
+          <Hello
+            clearScreen={clearNotConnectedScreen}
+            ressurectScreen={ressurectNotConnectedScreen}
+          />
+        )}
+        {displayScreen === 'Simplified' && (
+          // <Simplified />
+          // <NavigationContainer>
+          //   <Tab.Navigator>
+          //     <Tab.Screen name="Overview" component={Simplified} />
+          //     <Tab.Screen name="Technical" component={Complex} />
+          //     {/* <Tab.Screen name="Three" component={ScreenThree} /> */}
+          //   </Tab.Navigator>
+          // </NavigationContainer>
+        )}
         {/* <Text className="text-5xl text-primary text-center font-bold">
             Sunride
           </Text>

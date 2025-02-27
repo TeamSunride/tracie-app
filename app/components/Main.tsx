@@ -17,7 +17,7 @@ function handleBle() {
   });
 }
 
-function Hello() {
+function Hello({clearScreen, ressurectScreen}) {
   const [serverConnected, setServerConnected] = useState(false);
   const [fadeToBlack, setFadeToBlack] = useState(false);
 
@@ -70,6 +70,16 @@ function Hello() {
   useEffect(() => {
     controls.transitionTo('idle');
   }, []);
+
+  useEffect(() => {
+    if (serverConnected) {
+      setTimeout(() => {
+        clearScreen();
+      }, 1000);
+    } else {
+      ressurectScreen();
+    }
+  });
 
   const starryBackground = useMemo(() => <StarryNight />, []);
 

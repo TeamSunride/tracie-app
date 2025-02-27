@@ -39,6 +39,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import Hello from './components/Main';
 import {scanBleDevices} from '../util/ble';
 import Simplified from './components/Simplified';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Complex from './components/Complex';
+import History from './components/History';
+import Ionicons from '@react-native-vector-icons/ionicons';
+
+const Tab = createBottomTabNavigator();
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -323,14 +329,36 @@ function App(): React.JSX.Element {
           />
         )}
         {displayScreen === 'Simplified' && (
-          <Simplified />
-          // <NavigationContainer>
-          //   <Tab.Navigator>
-          //     <Tab.Screen name="Overview" component={Simplified} />
-          //     <Tab.Screen name="Technical" component={Complex} />
-          //     {/* <Tab.Screen name="Three" component={ScreenThree} /> */}
-          //   </Tab.Navigator>
-          // </NavigationContainer>
+          // <Simplified />
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={({route}) => ({
+                headerShown: false,
+                tabBarIcon: ({focused, color, size}) => {
+                  let iconName;
+
+                  if (route.name === 'Home') {
+                    iconName = focused ? 'planet' : 'planet-outline';
+                  } else if (route.name === 'History') {
+                    iconName = focused ? 'rocket' : 'rocket-outline';
+                  } else if (route.name === 'Settings') {
+                    iconName = focused ? 'settings' : 'settings-outline';
+                  }
+
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: "#DB4640",
+                tabBarInactiveTintColor: "#FFFFFF",
+                tabBarStyle: {
+                  backgroundColor: "#000000",
+                },
+              })}>
+              <Tab.Screen name="Home" component={Simplified} />
+              <Tab.Screen name="History" component={History} />
+              <Tab.Screen name="Settings" component={Complex} />
+              {/* <Tab.Screen name="Three" component={ScreenThree} /> */}
+            </Tab.Navigator>
+          </NavigationContainer>
         )}
         {/* <Text className="text-5xl text-primary text-center font-bold">
             Sunride

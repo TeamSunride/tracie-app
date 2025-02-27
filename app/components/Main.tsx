@@ -126,13 +126,11 @@ function Hello() {
               justifyContent: 'center',
               alignItems: 'center',
             }}
-            // whileHover={{scale: 0.9, backgroundPosition: '100% 50%'}}
           >
             <MotiText
               style={{fontSize: 144, textAlign: 'center'}}
               state={controls}
               from={{translateY: 0}}
-              /*animate={controls.current}*/
             >
               🚀
             </MotiText>

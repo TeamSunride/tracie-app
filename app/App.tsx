@@ -40,7 +40,7 @@ import Hello from './components/Main';
 import {scanBleDevices} from '../util/ble';
 import Simplified from './components/Simplified';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Complex from './components/Complex';
+import Settings from './components/Settings';
 import History from './components/History';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
@@ -355,7 +355,7 @@ function App(): React.JSX.Element {
               })}>
               <Tab.Screen name="Home" component={Simplified} />
               <Tab.Screen name="History" component={History} />
-              <Tab.Screen name="Settings" component={Complex} />
+              <Tab.Screen name="Settings" component={Settings} />
               {/* <Tab.Screen name="Three" component={ScreenThree} /> */}
             </Tab.Navigator>
           </NavigationContainer>

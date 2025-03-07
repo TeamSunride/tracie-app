@@ -1,4 +1,10 @@
 {
   "name": "main",
-  "displayName": "TracieApp"
+  "displayName": "TracieApp",
+  "ios": {
+    "bundleIdentifier": "com.anonymous.main"
+  },
+  "plugins": [
+    "react-native-bootsplash"
+  ]
 }

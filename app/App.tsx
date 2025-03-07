@@ -34,10 +34,10 @@ import 'react-native-gesture-handler';
 // const minor = parseInt('0003', 16);
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import ScanDevicesScreen from './components/ScanDevices';
+// import ScanDevicesScreen from './components/ScanDevices';
 import {NavigationContainer} from '@react-navigation/native';
 import Hello from './components/Main';
-import {scanBleDevices} from '../util/ble';
+// import {scanBleDevices} from '../util/ble';
 import Simplified from './components/Simplified';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Settings from './components/Settings';

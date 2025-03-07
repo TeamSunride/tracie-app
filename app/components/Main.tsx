@@ -5,16 +5,17 @@ import {Easing} from 'react-native-reanimated';
 import StarryNight from './StarryNight';
 import Logo from './Logo';
 import LinearGradient from 'react-native-linear-gradient';
-import {connectToServer, scanBleDevices} from '../../util/ble';
+// import {connectToServer, scanBleDevices} from '../../util/ble';
 
 function handleBle() {
-  scanBleDevices().then(async devices => {
-    console.log('returned devices', devices);
-    if (devices && devices.length > 0) {
-      console.log('connecting to device', devices[0]);
-      await connectToServer(devices[0]);
-    }
-  });
+  console.log("doing stuff (not really)");
+  // scanBleDevices().then(async devices => {
+  //   console.log('returned devices', devices);
+  //   if (devices && devices.length > 0) {
+  //     console.log('connecting to device', devices[0]);
+  //     await connectToServer(devices[0]);
+  //   }
+  // });
 }
 
 function Hello({clearScreen, ressurectScreen}) {

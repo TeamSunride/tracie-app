@@ -1,4 +1,4 @@
-package com.tracieapp
+package com.anonymous.main3
 import expo.modules.ReactActivityDelegateWrapper
 
 import com.facebook.react.ReactActivity
@@ -25,6 +25,9 @@ class MainActivity : ReactActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     RNBootSplash.init(this, R.style.BootTheme) // ⬅️ initialize the splash screen
+    // @generated begin bootsplash-init - expo prebuild (DO NOT MODIFY) sync-f0f7dbc46f1d82498f47676b4197e1949dc7790f
+    RNBootSplash.init(this, R.style.BootTheme)
+    // @generated end bootsplash-init
     super.onCreate(savedInstanceState) // super.onCreate(null) with react-native-screens
   }
 }

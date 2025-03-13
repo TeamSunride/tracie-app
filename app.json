@@ -2,9 +2,24 @@
   "name": "main",
   "displayName": "TracieApp",
   "ios": {
-    "bundleIdentifier": "com.anonymous.main"
+    "bundleIdentifier": "com.anonymous.main3",
+    "infoPlist": {
+      "NSAppTransportSecurity": {
+        "NSAllowsArbitraryLoads": true
+      },
+      "NSBluetoothAlwaysUsageDescription": "This app uses Bluetooth to communicate with nearby devices."
+    }
   },
   "plugins": [
-    "react-native-bootsplash"
-  ]
+    [
+      "react-native-bootsplash",
+      {
+        "assetsDir": "assets/bootsplash"
+      }
+    ],
+    "expo-asset"
+  ],
+  "android": {
+    "package": "com.anonymous.main3"
+  }
 }

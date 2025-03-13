@@ -1,20 +1,18 @@
-const { getDefaultConfig } = require('expo/metro-config');
-const { mergeConfig } = require('@react-native/metro-config');
-const {withNativeWind} = require('nativewind/metro');
-const {
-  wrapWithReanimatedMetroConfig,
-} = require('react-native-reanimated/metro-config');
+// Learn more https://docs.expo.io/guides/customizing-metro
+const {getDefaultConfig} = require('expo/metro-config');
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(__dirname);
 
-const exportConfig = mergeConfig(getDefaultConfig(__dirname), config);
+[('js', 'jsx', 'json', 'ts', 'tsx', 'cjs', 'mjs')].forEach(ext => {
+  if (config.resolver.sourceExts.indexOf(ext) === -1) {
+    config.resolver.sourceExts.push(ext);
+  }
+});
+['glb', 'gltf', 'png', 'jpg'].forEach(ext => {
+  if (config.resolver.assetExts.indexOf(ext) === -1) {
+    config.resolver.assetExts.push(ext);
+  }
+});
 
-const nativeWindConfig = withNativeWind(exportConfig, {input: './global.css'});
-
-module.exports = wrapWithReanimatedMetroConfig(nativeWindConfig);
+module.exports = config;

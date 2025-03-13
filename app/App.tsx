@@ -42,7 +42,7 @@ import Simplified from './components/Simplified';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Settings from './components/Settings';
 import History from './components/History';
-import Ionicons from '@react-native-vector-icons/ionicons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 

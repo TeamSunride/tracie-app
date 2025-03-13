@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import StarryNight from './StarryNight';
 import Logo from './Logo';
-import Ionicons from '@react-native-vector-icons/ionicons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const DATA = [
   {

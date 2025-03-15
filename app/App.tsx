@@ -43,6 +43,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Settings from './components/Settings';
 import History from './components/History';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import SettingsNavigator from './components/SettingsNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -355,7 +356,7 @@ function App(): React.JSX.Element {
               })}>
               <Tab.Screen name="Home" component={Simplified} />
               <Tab.Screen name="History" component={History} />
-              <Tab.Screen name="Settings" component={Settings} />
+              <Tab.Screen name="Settings" component={SettingsNavigator} />
               {/* <Tab.Screen name="Three" component={ScreenThree} /> */}
             </Tab.Navigator>
           </NavigationContainer>

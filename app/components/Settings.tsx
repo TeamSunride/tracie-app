@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {
   Text,
   View,
@@ -18,6 +18,7 @@ const DATA = [
         key: 'theme',
         label: 'Theme',
         icon: 'sparkles-sharp',
+        navigateTo: 'ThemeSettings',
       },
     ],
   },
@@ -28,11 +29,13 @@ const DATA = [
         key: 'about',
         label: 'About',
         icon: 'help-circle-sharp',
+        navigateTo: 'AboutSettings',
       },
       {
         key: 'help',
         label: 'Help',
         icon: 'help-buoy-sharp',
+        navigateTo: 'HelpSettings',
       },
     ],
   },
@@ -93,14 +96,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Settings() {
+export default function Settings({navigation}) {
   const starryBackground = useMemo(() => <StarryNight />, []);
   //   const [timeElapsed, setTimeElapsed] = useState('00:00:00');
   //   const [maxAltitude, setMaxAltitude] = useState('892');
   //   const [maxVerticalSpeed, setMaxVerticalSpeed] = useState('92');
 
-  const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.item}>
+  const renderItem = ({item, navigation}) => (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => navigation.navigate(item.navigateTo)}>
       <Ionicons name={item.icon} size={22} color="#555" style={styles.icon} />
       <Text style={styles.label}>{item.label}</Text>
       <Ionicons name="chevron-forward" size={20} color="#aaa" />
@@ -110,6 +115,7 @@ export default function Settings() {
   const renderSectionHeader = ({section: {title}}) => (
     <Text style={styles.sectionHeader}>{title}</Text>
   );
+
   return (
     <>
       <View style={styles.logoContainer}>
@@ -119,7 +125,7 @@ export default function Settings() {
         <SectionList
           sections={DATA}
           keyExtractor={item => item.key}
-          renderItem={renderItem}
+          renderItem={({item}) => renderItem({item, navigation})}
           renderSectionHeader={renderSectionHeader}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
           SectionSeparatorComponent={() => (

@@ -44,10 +44,11 @@ import Settings from './components/Settings';
 import History from './components/History';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import SettingsNavigator from './components/SettingsNavigator';
+import { checkAndRequestPermission } from './util/permissions';
 
 const Tab = createBottomTabNavigator();
 
-function App(): React.JSX.Element {
+async function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -308,6 +309,8 @@ function App(): React.JSX.Element {
       console.log('BootSplash has been hidden successfully');
     });
   }, []);
+
+  // await checkAndRequestPermission();
 
   return (
     <SafeAreaView style={backgroundStyle}>

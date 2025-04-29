@@ -23,6 +23,7 @@
     "expo-asset": "~11.0.4",
     "expo-asset-utils": "^3.0.0",
     "expo-gl": "~15.0.4",
+    "expo-nearby-connections": "^1.0.0",
     "moti": "^0.29.0",
     "nativewind": "^4.1.23",
     "react": "18.3.1",
@@ -41,7 +42,8 @@
     "text-encoding": "^0.7.0",
     "three": "^0.174.0",
     "three-stdlib": "^2.35.14",
-    "undefined": "@expo/vector-icons/Ionicons"
+    "undefined": "@expo/vector-icons/Ionicons",
+    "expo-constants": "~17.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

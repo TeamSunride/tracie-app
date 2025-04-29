@@ -32,7 +32,7 @@ function sleep(ms: number) {
 export function scanBleDevices(
   serviceUuids = SERVICE_UUIDS,
   secondsToScanFor = SECONDS_TO_SCAN_FOR,
-) {
+): Promise<Peripheral[]> {
   return new Promise(async (resolve, reject) => {
     try {
       console.debug('[startScan] starting scan...');

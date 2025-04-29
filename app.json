@@ -18,11 +18,13 @@
       }
     ],
     "expo-asset",
-    "expo-nearby-connections",
-    {
-      "bonjourServicesName": "tracie-app",
-      "localNetworkUsagePermissionText": "$(PRODUCT_NAME) need access to your local network to discover nearby devices"
-    }
+    [
+      "expo-nearby-connections",
+      {
+        "bonjourServicesName": "tracie-app",
+        "localNetworkUsagePermissionText": "$(PRODUCT_NAME) need access to your local network to discover nearby devices"
+      }
+    ]
   ],
   "android": {
     "package": "com.anonymous.main3"

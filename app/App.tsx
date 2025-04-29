@@ -48,7 +48,7 @@ import { checkAndRequestPermission } from './util/permissions';
 
 const Tab = createBottomTabNavigator();
 
-async function App(): React.JSX.Element {
+function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {

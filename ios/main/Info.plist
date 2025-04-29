@@ -44,6 +44,12 @@
     </dict>
     <key>NSBluetoothAlwaysUsageDescription</key>
     <string>This app uses Bluetooth to communicate with nearby devices.</string>
+    <key>NSBonjourServices</key>
+    <array>
+      <string>_tracie-app._tcp</string>
+    </array>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>$(PRODUCT_NAME) need access to your local network to discover nearby devices</string>
     <key>UILaunchStoryboardName</key>
     <string>BootSplash</string>
     <key>UIRequiredDeviceCapabilities</key>

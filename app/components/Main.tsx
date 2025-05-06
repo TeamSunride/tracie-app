@@ -5,6 +5,7 @@ import {Easing} from 'react-native-reanimated';
 import StarryNight from './StarryNight';
 import Logo from './Logo';
 import LinearGradient from 'react-native-linear-gradient';
+import { network } from '../util/network';
 // import {connectToServer, scanBleDevices} from '../../util/ble';
 
 function handleBle() {
@@ -51,10 +52,6 @@ function Hello({clearScreen, ressurectScreen}) {
     },
   });
 
-  const handleServerConnection = () => {
-    setServerConnected(!serverConnected);
-  };
-
   const handleFadeToBlack = () => {
     setFadeToBlack(true);
   };
@@ -83,6 +80,19 @@ function Hello({clearScreen, ressurectScreen}) {
   });
 
   const starryBackground = useMemo(() => <StarryNight />, []);
+
+  const interval = setInterval(() => {
+    network.joinNetwork()
+      .then(() => {
+        console.log('Network connected');
+        clearInterval(interval);
+        setServerConnected(true);
+      })
+      .catch(error => {
+        console.error('Network connection failed', error);
+        setServerConnected(false);
+      });
+  }, 10000);
 
   return (
     <>
@@ -184,12 +194,6 @@ function Hello({clearScreen, ressurectScreen}) {
           </MotiText>
         </View>
       </MotiView>
-      <Button
-        onPress={handleServerConnection}
-        title="Simulate SERVER Connection"
-        color="#841584"
-      />
-      <Button onPress={handleBle} title="Scan BLE Devices" color="#841584" />
       {starryBackground}
     </>
   );

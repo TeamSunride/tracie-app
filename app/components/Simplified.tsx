@@ -3,12 +3,19 @@ import {Text, View} from 'react-native';
 import StarryNight from './StarryNight';
 import Logo from './Logo';
 import SimpleDisplay from './data/SimpleDisplay';
+import { network } from '../util/network';
 
 export default function Simplified() {
   const starryBackground = useMemo(() => <StarryNight />, []);
   const [timeElapsed, setTimeElapsed] = useState('00:00:00');
   const [maxAltitude, setMaxAltitude] = useState('892');
   const [maxVerticalSpeed, setMaxVerticalSpeed] = useState('92');
+  network.onPayloadReceived((payload) => {
+    console.log('Payload received:', payload);
+    setTimeElapsed(payload.flightTime);
+    setMaxAltitude(payload.maxAltitude);
+    setMaxVerticalSpeed(payload.maxVerticalSpeed);
+  });
   return (
     <>
       <View

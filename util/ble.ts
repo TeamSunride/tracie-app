@@ -143,3 +143,14 @@ export async function connectToServer(peripheral: Peripheral) {
     console.error('Error reading data from peripheral', error);
   }
 }
+
+export async function readFromServer(peripheral: Peripheral) {
+  console.log('READING FROM PERIPHERAL', peripheral.id);
+  try {
+    const response = await BleManager.read(peripheral.id, 'B370', 'B371');
+    // console.log('read data:', Buffer.from(response, 'base64').toString('utf8'));
+    return Buffer.from(response, 'base64').toString('utf8');
+  } catch (error) {
+    console.error('Error reading data from peripheral', error);
+  }
+}

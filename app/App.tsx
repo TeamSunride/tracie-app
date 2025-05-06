@@ -45,6 +45,7 @@ import History from './components/History';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import SettingsNavigator from './components/SettingsNavigator';
 import { checkAndRequestPermission } from './util/permissions';
+import Map from './components/Map';
 
 const Tab = createBottomTabNavigator();
 
@@ -347,6 +348,8 @@ function App(): React.JSX.Element {
                     iconName = focused ? 'rocket' : 'rocket-outline';
                   } else if (route.name === 'Settings') {
                     iconName = focused ? 'settings' : 'settings-outline';
+                  } else if (route.name === 'Map') {
+                    iconName = focused ? 'map' : 'map-outline';
                   }
 
                   return <Ionicons name={iconName} size={size} color={color} />;
@@ -358,6 +361,7 @@ function App(): React.JSX.Element {
                 },
               })}>
               <Tab.Screen name="Home" component={Simplified} />
+              <Tab.Screen name="Map" component={Map} />
               <Tab.Screen name="History" component={History} />
               <Tab.Screen name="Settings" component={SettingsNavigator} />
               {/* <Tab.Screen name="Three" component={ScreenThree} /> */}

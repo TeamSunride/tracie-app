@@ -7,9 +7,10 @@ import {
   stopDiscovery,
   Strategy,
 } from 'expo-nearby-connections';
-import {randomUUID} from 'crypto';
-import {connectToServer, scanBleDevices} from '../../util/ble';
+import uuid from 'react-native-uuid';
+import {connectToServer, readFromServer, scanBleDevices} from '../../util/ble';
 import { TelemetryData } from './telemetry';
+import { Peripheral } from 'react-native-ble-manager';
 
 type DeviceType = 'master' | 'slave' | 'unknown';
 
@@ -20,10 +21,10 @@ export interface NetworkPayload {
 
 export class Network {
   private deviceType: DeviceType = 'unknown';
-  private deviceId = randomUUID();
+  private deviceId = uuid.v4();
   public connected = false;
   public listenerData: any = {};
-  private callback: (payload: NetworkPayload) => void;
+  private callback: (payload: TelemetryData) => void;
 
   async joinNetwork() {
     try {
@@ -68,6 +69,9 @@ export class Network {
         if (!this.callback) {
             throw new Error("Data received, but no callback provided. Please use onPayloadReceived to specify a callback function");
         }
+        const payload: NetworkPayload = JSON.parse(text);
+        console.log('Received data', payload);
+        this.callback(payload.data);
       }
     });
   }
@@ -93,14 +97,25 @@ export class Network {
     if (devices && devices.length > 0) {
       console.log('connecting to device', devices[0]);
       await connectToServer(devices[0]);
+      this.registerServerListeners(devices[0]);
     } else {
       throw new Error('Connection to server failed');
     }
   }
 
-  private registerServerListeners() {}
+  private registerServerListeners(peripheral: Peripheral) {
+    setInterval(async () => {
+      const text = await readFromServer(peripheral);
+      console.log("raw data", text);
+      const payload: TelemetryData = JSON.parse(text);
+      console.log('Received data', payload);
+      if (this.callback) this.callback(payload);
+    }, 1000);
+  }
 
-  public onPayloadReceived(callback: (payload: NetworkPayload) => void) {
+  public onPayloadReceived(callback: (payload: TelemetryData) => void) {
     this.callback = callback;
   }
 }
+
+export const network = new Network();
